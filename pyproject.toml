@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coffee-nerf-cad"
+version = "0.1.0"
+description = "Local-first NeRF/Gaussian reconstruction to printable STL, 3MF, and experimental STEP."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "coffee-nerf-cad contributors" }]
+dependencies = [
+  "pyyaml>=6.0",
+  "numpy>=1.26",
+  "trimesh>=4.4",
+]
+
+[project.optional-dependencies]
+mesh = [
+  "open3d>=0.18",
+  "pymeshlab>=2023.12",
+]
+cad = [
+  "build123d>=0.8",
+  "ocp-vscode>=2.6",
+]
+reconstruction = [
+  "nerfstudio>=1.1",
+]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+]
+
+[project.scripts]
+coffee-nerf-cad = "coffee_nerf_cad.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["coffee_nerf_cad*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
