@@ -1,0 +1,14 @@
+pipeline:
+  data: input/images
+  output_dir: outputs/nerfstudio
+  method: nerfacto
+  pose_source: colmap
+
+colmap:
+  matching_method: exhaustive
+  preserve_scale: true
+
+mesh_extraction:
+  method: marching-cubes
+  output: outputs/meshes/reconstruction.ply
+  estimate_normals: true
