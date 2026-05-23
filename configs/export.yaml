@@ -1,0 +1,14 @@
+units: mm
+validate_watertight: true
+targets:
+  stl:
+    enabled: true
+    path: outputs/stl
+  3mf:
+    enabled: true
+    path: outputs/3mf
+  step:
+    enabled: true
+    mode: mesh-wrapper
+    experimental: true
+    path: outputs/step
