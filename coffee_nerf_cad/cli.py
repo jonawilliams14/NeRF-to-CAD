@@ -109,9 +109,9 @@ class _WrapperMesh:
 
 
 def cmd_colmap(args: argparse.Namespace) -> None:
-    require_executable("ns-process-data")
+    ns_process_data = require_executable("ns-process-data")
     command = [
-        "ns-process-data",
+        ns_process_data,
         "images",
         "--data",
         str(args.images),
@@ -124,16 +124,16 @@ def cmd_colmap(args: argparse.Namespace) -> None:
 
 
 def cmd_train(args: argparse.Namespace) -> None:
-    require_executable("ns-train")
-    command = ["ns-train", "nerfacto", "--data", str(args.data), "--output-dir", str(args.output)]
+    ns_train = require_executable("ns-train")
+    command = [ns_train, "nerfacto", "--data", str(args.data), "--output-dir", str(args.output)]
     run_command(command, dry_run=args.dry_run)
 
 
 def cmd_extract(args: argparse.Namespace) -> None:
-    require_executable("ns-export")
+    ns_export = require_executable("ns-export")
     ensure_parent(args.output)
     command = [
-        "ns-export",
+        ns_export,
         args.method,
         "--load-config",
         str(args.config),
